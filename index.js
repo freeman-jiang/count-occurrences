@@ -24,16 +24,16 @@ var countOccurrences = function (code, target) {
             while (k < target.length) {
                 var checkingChar = code[i + k];
                 var nextChar = code[i + k + 1];
+                if (checkingChar !== target[k]) {
+                    k++;
+                    break;
+                }
                 // Criteria for passing a rigorous check:
                 //    - all characters of the substring are checked and they match the target
                 //    - next character is not a word character (letter or number) or dash
                 //    - OR next character is undefined => last character is at the end of a line
                 if (k === target.length - 1 && (!nextChar || !/\w|-/.test(nextChar))) {
                     result.push([rowIndex, colIndex]);
-                }
-                if (checkingChar !== target[k]) {
-                    k++;
-                    break;
                 }
                 k++;
             }
@@ -60,4 +60,4 @@ console.log(countOccurrences("const x2 = {x_3: 3x}\ny = xx + x1\nnx = 2x + x_x\n
 // Expected: [[0, 30], [2,13], [3,17]] - (3) matches
 console.log(countOccurrences("The tools that exist for them to manage their\nwork are either reactive, inflexible, or stale.\nThey resolve to rotating schedules of\ndashboard-sweeps to catch important\nmoments and reference poorly-maintained\nGoogle Docs for process management.\nAvenue is the first tool custom-built for modern\noperations teams powered by all a company's\ndata across all their systems.", "to"));
 // Expected: [[0, 6]] - (1) match
-console.log(countOccurrences("Hello there up-there-you up-there there-you!", "there"));
+console.log(countOccurrences("Hello there up-there-you up-there there-you! therm", "there"));
