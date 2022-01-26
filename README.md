@@ -1,6 +1,6 @@
 # count-occurrences
 
-Algorithm to calculate number of occurences of a variable within a string of code.
+Algorithm to calculate the row and column of the occurences of a variable within a string of code.
 
 Example:
 
